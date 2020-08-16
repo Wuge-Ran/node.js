@@ -1,12 +1,24 @@
+let url = require("url");
+let http = require("http");
+let router =  require('./router')
+var requestHandlers = require("./requestHandlers");
 let start = function (){
-  var http = require("http");
+  http.createServer(onRequest).listen(8888);
   console.log('running')
-  let i = 0;
-  http.createServer(function(request, response) {
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.write("Hello World");
-    response.end();
-  }).listen(8888);
+}
+let handle = {
+  '/':requestHandlers.start,
+  '/start':requestHandlers.start,
+  '/update':requestHandlers.update
+}
+
+function onRequest(request, response) {
+  var pathname = url.parse(request.url).pathname;
+  console.log("Request for " + pathname + " received.");
+  router.route(pathname,handle);
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.write('hello world!!');
+  response.end();
 }
 
 exports.start = start;
