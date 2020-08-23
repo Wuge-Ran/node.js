@@ -8,13 +8,21 @@ program.version(version,'-v, --version')
 program
     .command('init')
     .alias('i')
-    .action(option => {
-        console.log('==list==')
+    .action(() => {
+        console.log('==init==')
         child_process.execSync('npm config set @mfelibs:registry http://registry.cnpm.sina.com.cn/');
         child_process.execSync('npm config set @app:registry http://registry.cnpm.sina.com.cn/');
         child_process.execSync('npm config set registry https://registry.npm.taobao.org/');
         let stdout =  child_process.execSync('npm config list');
         console.log(stdout.toString());
     })
-
+//git快速指令
+program
+    .command('push <commit>')
+    .action(commit => {
+        console.log('==push==',commit)
+        child_process.execSync('git add .');
+        child_process.execSync(`git commit -m '${commit}'`);
+        child_process.execSync('git push');
+    })
 program.parse(process.argv);
