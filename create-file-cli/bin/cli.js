@@ -20,9 +20,10 @@ program
 program
     .command('push <commit>')
     .action(commit => {
-        console.log('==push==',commit)
+        console.log('==pushing==');
         child_process.execSync('git add .');
         child_process.execSync(`git commit -m '${commit}'`);
         child_process.execSync('git push');
+        console.log('==push done==',commit)
     })
 program.parse(process.argv);
