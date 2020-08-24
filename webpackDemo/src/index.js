@@ -1,4 +1,2 @@
-const s = ()=>{
-    console.log('hello webpack')
-}
-s();
+import str from './a.js';
+console.log(str);
