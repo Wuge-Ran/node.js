@@ -16,9 +16,12 @@ npm install  @mfelibs/wuge -g
     wuge -v
    
 ```
-### 初始化
+### 初始化仓库
 ```bash
     wuge i
 ```
-
+### add commit push 一键三连
+```bash
+    wuge push 'commit内容'
+```
 

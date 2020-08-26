@@ -1,10 +1,12 @@
 {
   "name": "@wuge/cli-demo",
-  "version": "1.0.3",
-  "description": "学习cli",
+  "version": "1.0.4",
+  "description": "方便的cli",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client:dev": "scripty",
+    "build": "echo 22",
+    "deploy": "npm-run-all test build"
   },
   "bin": {
     "wuge": "./bin/cli.js"
@@ -13,5 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^6.0.0"
+  },
+  "devDependencies": {
+    "scripty": "^2.0.0"
   }
 }

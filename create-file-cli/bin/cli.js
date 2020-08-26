@@ -18,9 +18,9 @@ program
     })
 //git快速指令
 program
-    .command('push <commit>')
+    .command('push [commit]')
     .action(commit => {
-        console.log('==pushing==');
+        console.log('==pushing==',commit);
         child_process.execSync('git add .');
         child_process.execSync(`git commit -m '${commit}'`);
         child_process.execSync('git push');
