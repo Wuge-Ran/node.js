@@ -21,6 +21,10 @@ program
     .command('push [commit]')
     .action(commit => {
         console.log('==pushing==',commit);
+        if(!commit){
+            console.warn(`🚀不存在commit，'默认renew',以后建议手动添加commit`)
+            commit = 'renew';
+        }
         child_process.execSync('git add .');
         child_process.execSync(`git commit -m '${commit}'`);
         child_process.execSync('git push');
