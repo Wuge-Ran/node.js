@@ -19,7 +19,17 @@ checkNodeVersion(require('../package.json').engines.node, 'create-project-cli');
 const program = require('commander');
 program
   .version(require('../package.json').version,'-v')
-  .usage('<command> [options]')
+  .usage('<command> [options] ')
+
+
+// create
+program
+  .command('new <app-name>')
+  .description('create a new project powered by super-baby-cli')
+  .action(appName => {
+    require('../scripts/create')(appName)
+  })
+
 
 
 //parse输出

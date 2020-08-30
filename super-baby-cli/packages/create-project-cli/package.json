@@ -4,7 +4,7 @@
   "description": "项目生成cli",
   "main": "index.js",
   "bin": {
-    "wuge-create": "./bin/create.js"
+    "wuge-create": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,7 @@
   "devDependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",
-    "semver": "^7.3.2"
+    "semver": "^7.3.2",
+    "validate-npm-package-name": "^3.0.0"
   }
 }
