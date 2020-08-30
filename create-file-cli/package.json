@@ -1,6 +1,6 @@
 {
   "name": "@wuge/cli-demo",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "方便的cli",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "commander": "^6.0.0"
   },
   "devDependencies": {
+    "chalk": "^4.1.0",
     "scripty": "^2.0.0"
   }
 }
