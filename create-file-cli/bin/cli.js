@@ -28,12 +28,16 @@ program
 program
     .command('push [commit]')
     .action(commit => {
-        spinner.test = `${chalk.green('👼👼pushing... 👼👼')}${commit}`
-        spinner.start();
+        spinner.text = `${chalk.green('👼👼pushing... 👼👼')}${commit}`
+       
+        setTimeout(()=>{
+            spinner.stop()
+        },1000)
         if(!commit){
-            console.warn(chalk.red.dim(`😭不存在commit，'默认renew',以后建议手动添加commit😭`))
+            spinner.text = chalk.red.dim(`😭不存在commit，'默认renew',以后建议手动添加commit😭`)
             commit = 'renew';
         }
+        spinner.start();
         child_process.execSync('git add .');
         child_process.execSync(`git commit -m '${commit}'`);
         child_process.execSync('git push');
