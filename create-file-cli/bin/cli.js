@@ -4,6 +4,10 @@ var program = require('commander');
 var child_process = require('child_process');
 var package_info = require('../package.json');
 const chalk = require('chalk');
+const ora = require('ora');
+
+const spinner = ora();
+
 let version = package_info.version;
 program
 .version(version,'-v, --version')
@@ -24,7 +28,8 @@ program
 program
     .command('push [commit]')
     .action(commit => {
-        console.log(chalk.green('👼👼pushing... 👼👼'),commit);
+        spinner.test = `${chalk.green('👼👼pushing... 👼👼')}${commit}`
+        spinner.start();
         if(!commit){
             console.warn(chalk.red.dim(`😭不存在commit，'默认renew',以后建议手动添加commit😭`))
             commit = 'renew';
@@ -32,6 +37,9 @@ program
         child_process.execSync('git add .');
         child_process.execSync(`git commit -m '${commit}'`);
         child_process.execSync('git push');
+        spinner.stop();
         console.log(chalk.green('👼👼push done 👼👼'),commit);
     })
+
+
 program.parse(process.argv);
