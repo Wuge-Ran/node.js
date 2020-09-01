@@ -30,9 +30,6 @@ program
     .action(commit => {
         spinner.text = `${chalk.green('👼👼pushing... 👼👼')}${commit}`
        
-        setTimeout(()=>{
-            spinner.stop()
-        },1000)
         if(!commit){
             spinner.text = chalk.red.dim(`😭不存在commit，'默认renew',以后建议手动添加commit😭`)
             commit = 'renew';
